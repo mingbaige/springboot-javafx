@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>de.roskenet</groupId>
@@ -107,10 +107,10 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-        <groupId>org.testfx</groupId>
-        <artifactId>testfx-core</artifactId>
-        <version>${testfx.version}</version>
-        <scope>test</scope>
+      <groupId>org.testfx</groupId>
+      <artifactId>testfx-core</artifactId>
+      <version>${testfx.version}</version>
+      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.testfx</groupId>
@@ -118,11 +118,53 @@
       <version>${testfx.version}</version>
       <scope>test</scope>
     </dependency>
-      <dependency>
-          <groupId>org.testfx</groupId>
-          <artifactId>openjfx-monocle</artifactId>
-          <version>8u76-b04</version>
-      </dependency>
+    <dependency>
+      <groupId>org.testfx</groupId>
+      <artifactId>openjfx-monocle</artifactId>
+      <version>8u76-b04</version>
+    </dependency>
+    <dependency>
+      <scope>compile</scope>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-controls</artifactId>
+      <version>17-ea+9</version>
+    </dependency>
+    <dependency>
+      <scope>compile</scope>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-base</artifactId>
+      <version>17-ea+9</version>
+    </dependency>
+    <dependency>
+      <scope>compile</scope>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-media</artifactId>
+      <version>17-ea+9</version>
+    </dependency>
+    <dependency>
+      <scope>compile</scope>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-web</artifactId>
+      <version>17-ea+9</version>
+    </dependency>
+    <dependency>
+      <scope>compile</scope>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-swing</artifactId>
+      <version>17-ea+9</version>
+    </dependency>
+    <dependency>
+      <scope>compile</scope>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-fxml</artifactId>
+      <version>17-ea+9</version>
+    </dependency>
+    <dependency>
+      <scope>compile</scope>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-graphics</artifactId>
+      <version>17-ea+9</version>
+    </dependency>
   </dependencies>
 
   <distributionManagement>

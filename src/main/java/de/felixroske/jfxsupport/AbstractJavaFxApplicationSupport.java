@@ -94,7 +94,7 @@ public abstract class AbstractJavaFxApplicationSupport extends Application {
             SpringApplication.run(this.getClass(), savedArgs)
         ).whenComplete((ctx, throwable) -> {
             if (throwable != null) {
-                LOGGER.error("Failed to load spring application context: ", throwable);
+                LOGGER.error("加载环境失败 ", throwable);
                 Platform.runLater(() -> errorAction.accept(throwable));
             } else {
                 Platform.runLater(() -> {
@@ -115,24 +115,29 @@ public abstract class AbstractJavaFxApplicationSupport extends Application {
      */
     @Override
     public void start(final Stage stage) throws Exception {
-
+        stage.setMaximized(true);
         GUIState.setStage(stage);
+        GUIState.setTitle("阿云梯:www.ayunti.cn");
         GUIState.setHostServices(this.getHostServices());
+
         final Stage splashStage = new Stage(StageStyle.TRANSPARENT);
 
 		if (AbstractJavaFxApplicationSupport.splashScreen.visible()) {
+
 			final Scene splashScene = new Scene(splashScreen.getParent(), Color.TRANSPARENT);
 			splashStage.setScene(splashScene);
             splashStage.getIcons().addAll(defaultIcons);
             splashStage.initStyle(StageStyle.TRANSPARENT);
             beforeShowingSplash(splashStage);
             splashStage.show();
+
 		}
 
         splashIsShowing.complete(() -> {
             showInitialView();
             if (AbstractJavaFxApplicationSupport.splashScreen.visible()) {
                 splashStage.hide();
+                splashStage.close();
                 splashStage.setScene(null);
             }
         });
@@ -179,7 +184,7 @@ public abstract class AbstractJavaFxApplicationSupport extends Application {
 
         }
         catch (Throwable t) {
-            LOGGER.error("Failed to load application: ", t);
+            LOGGER.error("加载程序错误: ", t);
             errorAction.accept(t);
         }
     }
@@ -193,9 +198,9 @@ public abstract class AbstractJavaFxApplicationSupport extends Application {
      */
     private static Consumer<Throwable> defaultErrorAction() {
         return e -> {
-            Alert alert = new Alert(AlertType.ERROR, "Oops! An unrecoverable error occurred.\n" +
-                    "Please contact your software vendor.\n\n" +
-                    "The application will stop now.");
+            Alert alert = new Alert(AlertType.ERROR, "程序错误\n" +
+                    "请联系客服\n\n" +
+                    "程序关闭.");
             alert.showAndWait().ifPresent(response -> Platform.exit());
         };
     }
@@ -226,8 +231,10 @@ public abstract class AbstractJavaFxApplicationSupport extends Application {
     public void stop() throws Exception {
         super.stop();
         if (applicationContext != null) {
+            applicationContext.stop();
             applicationContext.close();
         } // else: someone did it already
+        Platform.exit();
     }
 
     /**

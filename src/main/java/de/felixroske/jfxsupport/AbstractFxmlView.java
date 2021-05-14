@@ -158,7 +158,7 @@ public abstract class AbstractFxmlView implements ApplicationContextAware {
 		try {
 			loader.load();
 		} catch (final IOException | IllegalStateException e) {
-			throw new IllegalStateException("Cannot load " + getConventionalName(), e);
+			throw new IllegalStateException("不能加载 " + getConventionalName(), e);
 		}
 
 		return loader;
